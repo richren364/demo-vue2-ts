@@ -1,3 +1,11 @@
+
+### Git 
+```
+git init
+git remote add origin https://gitee.com/richren/demo-vue-ts.git
+git remote set-url --add origin git@github.com:richren364/demo-vue2-ts.git
+```
+
 ### `@vue/cli`创建的项目添加路由
 ```
 vue add router
