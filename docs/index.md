@@ -22,55 +22,49 @@ vue add @type/typescript
 
 自动安装 dependencies 和 devDependencies：
 
-- dependencies
-  - `vue-class-component`: 提供使用 class 语法写 vue 组件
-  - `vue-property-decorator`: 提供装饰器
-- devDependencies
-  - `@typescript-eslint/eslint-plugin`: 使用 eslint 校验 ts 代码
-  - `@typescript-eslint/parser`: 将 Typescript 转换为 AST 供 ESLint 校验使用
-  - `@vue/cli-plugin-typescript`: 使用 ts+ts-loader+fork-ts-checker-webpack-plugin 进行更快的类型检查
-  - `@vue/eslint-config-typescript`: 兼容 eslint 的 ts 校验规则
-  - `typescript`
+-   dependencies
+    -   `vue-class-component`: 提供使用 class 语法写 vue 组件
+    -   `vue-property-decorator`: 提供装饰器
+-   devDependencies
+    -   `@typescript-eslint/eslint-plugin`: 使用 eslint 校验 ts 代码
+    -   `@typescript-eslint/parser`: 将 Typescript 转换为 AST 供 ESLint 校验使用
+    -   `@vue/cli-plugin-typescript`: 使用 ts+ts-loader+fork-ts-checker-webpack-plugin 进行更快的类型检查
+    -   `@vue/eslint-config-typescript`: 兼容 eslint 的 ts 校验规则
+    -   `typescript`
 
 #### typescript 常见配置
 
 ```json
 {
-  // 编译选项
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "types": ["webpack-env"],
-    "paths": {
-      "@/*": ["src/*"]
+    // 编译选项
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "jsx": "preserve",
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": ["webpack-env"],
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
-  "exclude": ["node_modules"]
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
+    "exclude": ["node_modules"]
 }
 ```
 
 #### 其他相关文件说明
 
-- `src/shims-vue.d.ts`
-- `src/shims-tsx.d.ts`
+-   `src/shims-vue.d.ts`
+-   `src/shims-tsx.d.ts`
 
 ### 代码规范
 
@@ -101,63 +95,96 @@ module.exports = {
 
 #### demo2: eslint + prittier
 
-- eslint 配置文件
-  ```js
-  module.exports = {
-    root: true,
-    env: {
-      node: true,
-    },
-    extends: [
-      // eslint-plugin-vue
-      'plugin:vue/essential',
-      'eslint:recommended',
-      '@vue/typescript/recommended',
-      // @vue/eslint-config-prettier
-      '@vue/prettier',
-      // @vue/eslint-config-typescript
-      '@vue/prettier/@typescript-eslint',
-    ],
-    parserOptions: {
-      ecmaVersion: 2020,
-    },
-    rules: {
-      'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-      'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    },
-  };
-  ```
-- .pritterrc 配置文件
-  ```json
-  {
-    "tabWidth": 2,
-    "useTabs": true, // 使用tab（制表符）缩进而非空格
-    "singleQuote": true, // 单引号
-    "printWidth": 175, // 一行超过175个字符就换行
-    "semi": false, // 是否在行尾加分号
-    "trailingComma": "none", // 数组、对象最后一个元素的尾逗号
-    "bracketSpacing": true, // 花括号前后空格
-    "jsxBracketSameLine": false, // 使多行JSX元素最后一行末尾的 > 单独一行
-    "arrowParens": "avoid", //只有一个参数的箭头函数的参数是否带圆括号（默认avoid不带）
-    "htmlWhitespaceSensitivity": "ignore" //  HTML 文件空格敏感度
-  }
-  ```
-- vscode 配置文件
-
-  ```json
-  {
-    "[html]": {
-      "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[javascript]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[vue]": {
-      "editor.defaultFormatter": "octref.vetur"
-    },
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
+-   eslint 配置文件
+    ```js
+    module.exports = {
+        root: true,
+        env: {
+            node: true
+        },
+        extends: [
+            // eslint-plugin-vue
+            'plugin:vue/essential',
+            'eslint:recommended',
+            '@vue/typescript/recommended',
+            // @vue/eslint-config-prettier
+            '@vue/prettier',
+            // @vue/eslint-config-typescript
+            '@vue/prettier/@typescript-eslint'
+        ],
+        parserOptions: {
+            ecmaVersion: 2020
+        },
+        rules: {
+            'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+            'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+        }
     }
-  }
-  ```
+    ```
+-   .pritterrc 配置文件
+    ```json
+    {
+        "tabWidth": 2,
+        "useTabs": true, // 使用tab（制表符）缩进而非空格
+        "singleQuote": true, // 单引号
+        "printWidth": 175, // 一行超过175个字符就换行
+        "semi": false, // 是否在行尾加分号
+        "trailingComma": "none", // 数组、对象最后一个元素的尾逗号
+        "bracketSpacing": true, // 花括号前后空格
+        "jsxBracketSameLine": false, // 使多行JSX元素最后一行末尾的 > 单独一行
+        "arrowParens": "avoid", //只有一个参数的箭头函数的参数是否带圆括号（默认avoid不带）
+        "htmlWhitespaceSensitivity": "ignore" //  HTML 文件空格敏感度
+    }
+    ```
+-   vscode 配置文件
+
+    ```json
+    {
+        "[html]": {
+            "editor.defaultFormatter": "vscode.html-language-features"
+        },
+        "[javascript]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[vue]": {
+            "editor.defaultFormatter": "octref.vetur"
+        },
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true
+        }
+    }
+    ```
+
+### SASS 支持
+
+![picture 1](images/d6516e600ac10cdf64e7219c47bdc1b717c2d2408435af5a4439a80b663bfc7d.png)
+
+```sh
+npm install sass sass-loader -D
+npm install sass sass-loader@~10.2.0 -D
+```
+
+![picture 2](images/e9422feb0824f3ae4cc8604a72291bfb06e70b21440a23c4980655c547b903b6.png)
+sass-loader peerDependencies 中 webpack 版本不一致
+
+#### sass-loader 版本
+
+| sass-loader version | peerDependencies      |
+| ------------------- | --------------------- |
+| 12.1.0              | `"webpack": "^5.0.0"` |
+| 12.0.0              |                       |
+| 10.2.0              |                       |
+
+#### node 和 node-sass 版本对应关系
+
+| Nodejs | node-sass version | node_modules |
+| ------ | ----------------- | ------------ |
+| 15     | 5.0+              | 88           |
+| 14     | 4.14+             | 83           |
+| 13     | 4.13+, 5.0-       | 79           |
+| 12     | 4.12+             | 72           |
+| 11     | 4.10+, 5.0-       | 67           |
+| 10     | 4.9+              | 64           |
+
+#### @cli/service 和 webpack 版本关系

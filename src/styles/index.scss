@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+html {
+    font-family: $font-family;
+    // css3: 字体缩放样式
+    // Chrome浏览器默认情况下的字体最小为12px，如果你要设置某字体大小为10px的话，你会在Chrome发现还是12px。
+    // 如果要使此生效的话，就得修改Chrome的默认配置了，一般应用下面的代码就能在全局生效了。
+    // 在移动设备上如手机和平板横屏会导致字体变大，-webkit-text-size-adjust: 100% 可以禁止字体变化。
+    // -webkit-text-size-adjust放在body上会导致页面缩放失效
+    -webkit-text-size-adjust: 100%;
+    // CSS3 抗锯齿渲染，使字体看起来会更清晰舒服
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    margin: 0;
+    background-color: $body-bg;
+}
+// 自定义 element 主题
+$--color-primary: $primary-color;
+$--color-success: $success-color;
+$--color-warning: $warning-color;
+$--color-danger: $danger-color;
+$--color-info: $info-color;
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import '~element-ui/packages/theme-chalk/src/index';
+
+.el-pagination {
+    color: #868e96;
+}
